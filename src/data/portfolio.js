@@ -4,12 +4,12 @@
  */
 
 export const profile = {
-    name: 'K Flamez',
+    name: 'Young Flamez',
     devName: 'd9p',
     role: 'Film Maker & Editor',
     tagline: 'I craft cinematic stories that move people.',
     location: 'Yangon, Myanmar',
-    email: 'yo@kflamez.design',
+    email: 'young@flamez.design',
     bio: [
         'I am a film maker & editor with 6+ years of experience helping people find their visual voice. My work spans music videos, documentaries, commercials, and narrative films.',
         'I believe great film is equal parts strategy and craft — every cut, color grade, and sound design choice has a job to do.',
@@ -19,6 +19,17 @@ export const profile = {
         { value: '40+', label: 'Satisfied clients' },
         { value: '6+', label: 'Years experience' },
     ],
+}
+
+
+import heroImg from '../assets/heroSection.png'
+import aboutImg from '../assets/aboutSection.png'
+import contImg from '../assets/contactSection.png'
+
+export const photo = {
+    heroImg: heroImg,
+    aboutImg: aboutImg,
+    contImg: contImg,
 }
 
 export const projects = [
@@ -49,7 +60,6 @@ export const services = [
 ]
 
 export const socials = [
-    { name: 'K Flamez', href: '#' },
     { name: 'Vimeo', href: '#' },
     { name: 'YouTube', href: '#' },
     { name: 'Instagram', href: '#' },

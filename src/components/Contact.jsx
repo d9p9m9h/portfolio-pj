@@ -2,7 +2,7 @@ import { useState } from 'react'
 import 'react-dom'
 import styled from 'styled-components'
 import { SectionHeading } from './SectionHeading.jsx'
-import { profile, socials } from '../data/portfolio.js'
+import { profile, socials, photo } from '../data/portfolio.js'
 
 const Section = styled.section`
   padding: 100px 0 110px;
@@ -54,77 +54,32 @@ const Social = styled.a`
   }
 `
 
-const Form = styled.form`
-  padding: 34px;
-  border-radius: 20px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
+// NEW: Wrapper, Image, Vignette
+const ImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;        /* Adjust if your image is different ratio */
+  border-radius: 1px;
+  overflow: hidden;
 `
 
-const Field = styled.div`
-  margin-bottom: 18px;
-
-  label {
-    display: block;
-    color: var(--muted);
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-
-  input,
-  textarea {
-    width: 100%;
-    padding: 12px 16px;
-    border-radius: 12px;
-    border: 1px solid var(--glass-border);
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    color: var(--text);
-    font-size: 0.95rem;
-    outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-
-    &:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
-    }
-  }
-
-  textarea {
-    min-height: 130px;
-    resize: vertical;
-  }
+const ContImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 `
 
-const Submit = styled.button`
-  padding: 12px 34px;
-  border: none;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.95rem;
-  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    opacity: 0.92;
-    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
-  }
-`
-
-const SentNote = styled.p`
-  margin: 16px 0 0;
-  color: var(--accent-2);
-  font-weight: 600;
+const Vignette = styled.div`
+  position: absolute;
+  inset: 0;
+  border-radius: 1px;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 80% 82% at 35% 35%,
+    transparent 35%,
+    var(--bg) 85%
+  );
 `
 
 export function Contact() {
@@ -159,29 +114,11 @@ export function Contact() {
               ))}
             </SocialRow>
           </div>
-
           <div className="col-lg-7">
-            <Form onSubmit={handleSubmit}>
-              <Field>
-                <label htmlFor="name">Name</label>
-                <input id="name" name="name" type="text" required />
-              </Field>
-              <Field>
-                <label htmlFor="email">Email</label>
-                <input id="email" name="email" type="email" required />
-              </Field>
-              <Field>
-                <label htmlFor="message">Message</label>
-                <textarea id="message" name="message" required />
-              </Field>
-              <Submit type="submit">Send message</Submit>
-              {sent && (
-                <SentNote>
-                  ✓ Thanks! Your message has been noted (skeleton only — no
-                  backend yet).
-                </SentNote>
-              )}
-            </Form>
+            <ImageWrapper>
+              <ContImg src={photo.contImg} alt={profile.name} />
+              <Vignette />
+            </ImageWrapper>
           </div>
         </div>
       </div>

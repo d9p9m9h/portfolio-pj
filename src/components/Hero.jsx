@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { profile } from '../data/portfolio.js'
+import { profile, photo } from '../data/portfolio.js'
 
 const Section = styled.section`
   min-height: 100vh;
@@ -155,7 +155,7 @@ const CardBack = styled.div`
 
 const CardMid = styled.div`
   position: absolute;
-  inset: 6% 8% 8% 4%;
+  inset: 6% 6% 6% 6%;
   border-radius: 22px;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -166,7 +166,7 @@ const CardFront = styled.div`
   position: absolute;
   inset: 12%;
   border-radius: 22px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: radial-gradient(circle at 50% 100%, rgba(250, 78, 210, 0.28), transparent 70%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,6 +175,24 @@ const CardFront = styled.div`
   color: #fff;
   box-shadow: 0 24px 60px rgba(139, 92, 246, 0.35);
 `
+
+const HeroImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.5));
+`
+
+const Backdrop = styled.div`
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 40%, rgba(216, 92, 250, 0.34), transparent 50%);
+  filter: blur(30px);
+  pointer-events: none;
+`
+
 
 export function Hero() {
   return (
@@ -204,7 +222,11 @@ export function Hero() {
             <Artboard>
               <CardBack />
               <CardMid />
-              <CardFront>▶</CardFront>
+              <CardFront>
+                <Backdrop />
+                <HeroImg src={photo.heroImg} alt={profile.name} />
+              </CardFront>
+              
             </Artboard>
           </div>
         </div>

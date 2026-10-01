@@ -1,9 +1,17 @@
 import styled from 'styled-components'
 import { SectionHeading } from './SectionHeading.jsx'
-import { profile } from '../data/portfolio.js'
+import { profile, photo } from '../data/portfolio.js'
 
 const Section = styled.section`
   padding: 100px 0;
+`
+
+const AboutImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
 `
 
 const Portrait = styled.div`
@@ -16,12 +24,12 @@ const Portrait = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4rem;
-  font-weight: 800;
-  color: var(--accent);
+  // font-size: 4rem;
+  // font-weight: 800;
+  // color: var(--accent);/
 
   &::after {
-    content: '';
+    // content: '';
     position: absolute;
     inset: 14px;
     border: 1px dashed rgba(139, 92, 246, 0.4);
@@ -91,7 +99,9 @@ export function About() {
                 />
                 <div className="row g-5 align-items-center">
                     <div className="col-lg-5">
-                        <Portrait>{initials}</Portrait>
+                        <Portrait>
+                          <AboutImg src={photo.aboutImg} alt={profile.name} />
+                        </Portrait>
                     </div>
                     <div className="col-lg-7">
                         {profile.bio.map((paragraph, i) => (

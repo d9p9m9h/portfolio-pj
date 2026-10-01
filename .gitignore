@@ -4,4 +4,3 @@ dist
 .DS_Store
 AGENTS.md
 jsconfig.json
-public/storage/images/lightTheme-reference.png
