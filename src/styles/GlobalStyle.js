@@ -16,6 +16,11 @@ export const GlobalStyle = createGlobalStyle`
     --accent-2: #ec4899;
     --text: #eceaf6;
     --muted: #9b97b0;
+    /* Glassmorphism tokens */
+    --glass-bg: rgba(20, 20, 31, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-blur: 20px;
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
 
   html {

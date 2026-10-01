@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import styled from 'styled-components'
+import { profile } from '../data/portfolio'
 
 const Header = styled.header`
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 1000;
-  background: rgba(11, 11, 18, 0.78);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
 `
 
 const Inner = styled.nav`
@@ -52,10 +54,15 @@ const Links = styled.ul`
     font-weight: 600;
     text-decoration: none;
     transition: all 0.2s ease;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid transparent;
 
     &:hover {
       color: var(--text);
-      background: var(--surface-2);
+      background: var(--glass-bg);
+      border-color: var(--glass-border);
     }
   }
 
@@ -72,11 +79,16 @@ const Cta = styled.a`
   font-size: 0.92rem;
   font-weight: 700;
   text-decoration: none;
-  transition: opacity 0.2s ease;
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
-    opacity: 0.9;
+    transform: translateY(-2px);
+    opacity: 0.92;
     color: #fff;
+    box-shadow: 0 10px 32px rgba(139, 92, 246, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
   }
 
   @media (max-width: 575px) {
@@ -92,9 +104,12 @@ const Burger = styled.button`
   width: 42px;
   height: 42px;
   padding: 10px;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   border-radius: 10px;
+  box-shadow: var(--glass-shadow);
 
   span {
     display: block;
@@ -114,8 +129,10 @@ const MobileMenu = styled.div`
 
   @media (max-width: 991px) {
     display: block;
-    border-top: 1px solid var(--border);
-    background: rgba(11, 11, 18, 0.97);
+    border-top: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     padding: 12px 0 18px;
 
     a {
@@ -127,60 +144,68 @@ const MobileMenu = styled.div`
 
       &:hover {
         color: var(--text);
-        background: var(--surface-2);
+        background: var(--glass-bg);
       }
     }
   }
 `
 
+const Gradient = styled.span`
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+`
+
 const links = [
-    { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#services', label: 'Services' },
-    { href: '#contact', label: 'Contact' },
+  { href: '#home', label: 'Home' },
+  { href: '#about', label: 'About' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#services', label: 'Services' },
+  { href: '#contact', label: 'Contact' },
 ]
 
 export function Navbar() {
-    const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false)
 
-    return (
-        <Header>
-            <div className="container">
-                <Inner>
-                    <Brand href="#home">
-                        <span className="dot" />
-                        alex.morgan
-                    </Brand>
+  return (
+    <Header>
+      <div className="container">
+        <Inner>
+          <Brand href="#home">
+            <span className="dot" />
+            <Gradient> {profile.name} </Gradient>
+          </Brand>
 
-                    <Links>
-                        {links.map((l) => (
-                            <li key={l.href}>
-                                <a href={l.href}>{l.label}</a>
-                            </li>
-                        ))}
-                    </Links>
+          <Links>
+            {links.map((l) => (
+              <li key={l.href}>
+                <a href={l.href}>{l.label}</a>
+              </li>
+            ))}
+          </Links>
 
-                    <Cta href="#contact">Let's talk</Cta>
+          <Cta href="#contact">Let's talk</Cta>
 
-                    <Burger onClick={() => setOpen((o) => !o)} aria-label="Toggle menu">
-                        <span />
-                        <span />
-                        <span />
-                    </Burger>
-                </Inner>
+          <Burger onClick={() => setOpen((o) => !o)} aria-label="Toggle menu">
+            <span />
+            <span />
+            <span />
+          </Burger>
+        </Inner>
 
-                {open && (
-                    <MobileMenu>
-                        {links.map((l) => (
-                            <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
-                                {l.label}
-                            </a>
-                        ))}
-                    </MobileMenu>
-                )}
-            </div>
-        </Header>
-    )
+        {open && (
+          <MobileMenu>
+            {links.map((l) => (
+              <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
+                {l.label}
+              </a>
+            ))}
+          </MobileMenu>
+        )}
+      </div>
+    </Header>
+  )
 }

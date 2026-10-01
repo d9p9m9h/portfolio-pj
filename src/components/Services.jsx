@@ -18,13 +18,17 @@ const Grid = styled.div`
 const Card = styled.div`
   padding: 28px;
   border-radius: 18px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 
   &:hover {
     transform: translateY(-4px);
     border-color: rgba(236, 72, 153, 0.5);
+    box-shadow: 0 12px 40px rgba(236, 72, 153, 0.15);
   }
 
   .icon {
@@ -47,25 +51,25 @@ const Card = styled.div`
 `
 
 export function Services() {
-    return (
-        <Section id="services">
-            <div className="container">
-                <SectionHeading
-                    tag="Services"
-                    title="What I can do for you"
-                    sub="From first sketch to final artwork — end-to-end design services."
-                />
+  return (
+    <Section id="services">
+      <div className="container">
+        <SectionHeading
+          tag="Services"
+          title="What I can do for you"
+          sub="From rough cut to final master — end-to-end post-production services."
+        />
 
-                <Grid>
-                    {services.map((s) => (
-                        <Card key={s.title}>
-                            <div className="icon">{s.icon}</div>
-                            <h3>{s.title}</h3>
-                            <p>{s.text}</p>
-                        </Card>
-                    ))}
-                </Grid>
-            </div>
-        </Section>
-    )
+        <Grid>
+          {services.map((s) => (
+            <Card key={s.title}>
+              <div className="icon">{s.icon}</div>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </Card>
+          ))}
+        </Grid>
+      </div>
+    </Section>
+  )
 }

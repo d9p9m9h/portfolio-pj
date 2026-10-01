@@ -42,11 +42,14 @@ const Eyebrow = styled.span`
   gap: 8px;
   padding: 8px 16px;
   border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   color: var(--muted);
   font-size: 0.85rem;
   font-weight: 600;
+  box-shadow: var(--glass-shadow);
 
   .pulse {
     width: 8px;
@@ -100,30 +103,37 @@ const PrimaryBtn = styled.a`
   color: #fff;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.35);
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
     opacity: 0.92;
     color: #fff;
+    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
   }
 `
 
 const GhostBtn = styled.a`
   padding: 14px 30px;
   border-radius: 999px;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   color: var(--text);
   font-weight: 700;
   text-decoration: none;
+  box-shadow: var(--glass-shadow);
   transition: all 0.2s ease;
 
   &:hover {
-    background: var(--surface-2);
+    background: var(--glass-bg);
     border-color: rgba(139, 92, 246, 0.5);
     color: var(--text);
+    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.15);
   }
 `
 
@@ -167,38 +177,38 @@ const CardFront = styled.div`
 `
 
 export function Hero() {
-    return (
-        <Section id="home">
-            <GlowA />
-            <GlowB />
-            <div className="container">
-                <div className="row g-5 align-items-center">
-                    <div className="col-lg-7">
-                        <Eyebrow>
-                            <span className="pulse" />
-                            {profile.role} — Available for freelance
-                        </Eyebrow>
-                        <Title>
-                            I design <Gradient>bold visuals</Gradient>
-                            <br />
-                            that tell stories.
-                        </Title>
-                        <Tagline>{profile.tagline}</Tagline>
-                        <Actions>
-                            <PrimaryBtn href="#projects">View my work</PrimaryBtn>
-                            <GhostBtn href="#contact">Get in touch</GhostBtn>
-                        </Actions>
-                    </div>
+  return (
+    <Section id="home">
+      <GlowA />
+      <GlowB />
+      <div className="container">
+        <div className="row g-5 align-items-center">
+          <div className="col-lg-7">
+            <Eyebrow>
+              <span className="pulse" />
+              {profile.role} — Available for freelance
+            </Eyebrow>
+            <Title>
+              I craft <Gradient>cinematic stories</Gradient>
+              <br />
+              that move people.
+            </Title>
+            <Tagline>{profile.tagline}</Tagline>
+            <Actions>
+              <PrimaryBtn href="#projects">Watch my reel</PrimaryBtn>
+              <GhostBtn href="#contact">Get in touch</GhostBtn>
+            </Actions>
+          </div>
 
-                    <div className="col-lg-5 d-none d-lg-block">
-                        <Artboard>
-                            <CardBack />
-                            <CardMid />
-                            <CardFront>A</CardFront>
-                        </Artboard>
-                    </div>
-                </div>
-            </div>
-        </Section>
-    )
+          <div className="col-lg-5 d-none d-lg-block">
+            <Artboard>
+              <CardBack />
+              <CardMid />
+              <CardFront>▶</CardFront>
+            </Artboard>
+          </div>
+        </div>
+      </div>
+    </Section>
+  )
 }

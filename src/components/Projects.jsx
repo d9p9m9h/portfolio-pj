@@ -20,16 +20,20 @@ const Filters = styled.div`
 const Chip = styled.button`
   padding: 8px 18px;
   border-radius: 999px;
-  border: 1px solid var(--border);
-  background: ${(p) => (p.$active ? 'linear-gradient(135deg, var(--accent), var(--accent-2))' : 'var(--surface-2)')};
+  border: 1px solid var(--glass-border);
+  background: ${(p) => (p.$active ? 'linear-gradient(135deg, var(--accent), var(--accent-2))' : 'var(--glass-bg)')};
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   color: ${(p) => (p.$active ? '#fff' : 'var(--muted)')};
   font-size: 0.88rem;
   font-weight: 600;
   transition: all 0.2s ease;
+  box-shadow: var(--glass-shadow);
 
   &:hover {
     border-color: rgba(139, 92, 246, 0.5);
     color: ${(p) => (p.$active ? '#fff' : 'var(--text)')};
+    background: ${(p) => (p.$active ? 'linear-gradient(135deg, var(--accent), var(--accent-2))' : 'var(--glass-bg)')};
   }
 `
 
@@ -42,13 +46,17 @@ const Grid = styled.div`
 const Card = styled.article`
   border-radius: 18px;
   overflow: hidden;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 
   &:hover {
     transform: translateY(-6px);
     border-color: rgba(139, 92, 246, 0.5);
+    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2);
   }
 `
 
@@ -89,44 +97,44 @@ const Title = styled.h3`
 const categories = ['All', ...new Set(projects.map((p) => p.category))]
 
 export function Projects() {
-    const [active, setActive] = useState('All')
-    const visible =
-        active === 'All' ? projects : projects.filter((p) => p.category === active)
+  const [active, setActive] = useState('All')
+  const visible =
+    active === 'All' ? projects : projects.filter((p) => p.category === active)
 
-    return (
-        <Section id="projects">
-            <div className="container">
-                <SectionHeading
-                    tag="Portfolio"
-                    title="Selected projects"
-                    sub="A mix of branding, print, illustration and UI work. Filter by category."
-                />
+  return (
+    <Section id="projects">
+      <div className="container">
+        <SectionHeading
+          tag="Portfolio"
+          title="Selected projects"
+          sub="A mix of music videos, documentaries, commercials, and narrative films. Filter by category."
+        />
 
-                <Filters>
-                    {categories.map((c) => (
-                        <Chip key={c} $active={active === c} onClick={() => setActive(c)}>
-                            {c}
-                        </Chip>
-                    ))}
-                </Filters>
+        <Filters>
+          {categories.map((c) => (
+            <Chip key={c} $active={active === c} onClick={() => setActive(c)}>
+              {c}
+            </Chip>
+          ))}
+        </Filters>
 
-                <Grid>
-                    {visible.map((p) => (
-                        <Card key={p.id}>
-                            <Cover $from={p.colors[0]} $to={p.colors[1]}>
-                                {p.category}
-                            </Cover>
-                            <Body>
-                                <Meta>
-                                    <span>{p.category}</span>
-                                    <span>{p.year}</span>
-                                </Meta>
-                                <Title>{p.title}</Title>
-                            </Body>
-                        </Card>
-                    ))}
-                </Grid>
-            </div>
-        </Section>
-    )
+        <Grid>
+          {visible.map((p) => (
+            <Card key={p.id}>
+              <Cover $from={p.colors[0]} $to={p.colors[1]}>
+                {p.category}
+              </Cover>
+              <Body>
+                <Meta>
+                  <span>{p.category}</span>
+                  <span>{p.year}</span>
+                </Meta>
+                <Title>{p.title}</Title>
+              </Body>
+            </Card>
+          ))}
+        </Grid>
+      </div>
+    </Section>
+  )
 }

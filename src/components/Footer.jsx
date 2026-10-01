@@ -1,10 +1,13 @@
 import styled from 'styled-components'
-import { profile, socials } from '../data/portfolio.js'
+import { dev, profile, socials } from '../data/portfolio.js'
 
 const FooterWrap = styled.footer`
   padding: 34px 0;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-top: 1px solid var(--glass-border);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3);
 `
 
 const Inner = styled.div`
@@ -15,13 +18,12 @@ const Inner = styled.div`
   gap: 16px;
 `
 
-const Brand = styled.a`
+const Brand = styled.div`
   display: inline-flex;
   align-items: center;
   gap: 10px;
   color: var(--text);
   font-weight: 700;
-  text-decoration: none;
 
   &::before {
     content: '';
@@ -53,24 +55,36 @@ const Link = styled.a`
   }
 `
 
+const Gradient = styled.span`
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+`
+
 export function Footer() {
-    return (
-        <FooterWrap>
-            <div className="container">
-                <Inner>
-                    <Brand href="#home">{profile.name}</Brand>
-                    <Copy>
-                        © {new Date().getFullYear()} {profile.name}. All rights reserved.
-                    </Copy>
-                    <Links>
-                        {socials.map((s) => (
-                            <Link key={s.name} href={s.href}>
-                                {s.name}
-                            </Link>
-                        ))}
-                    </Links>
-                </Inner>
-            </div>
-        </FooterWrap>
-    )
+  return (
+    <FooterWrap>
+      <div className="container">
+        <Inner>
+          <Copy />
+          <Copy>
+            © {new Date().getFullYear()} Developed by {profile.devName} all rights reserved.
+          </Copy>
+          <Links>
+            <Brand >
+              <Gradient>
+                {dev.map((s) => (
+                  <Link key={s.name} href={s.href}>
+                    {s.name}
+                  </Link>
+                ))}
+              </Gradient>
+            </Brand>
+          </Links>
+        </Inner>
+      </div>
+    </FooterWrap>
+  )
 }

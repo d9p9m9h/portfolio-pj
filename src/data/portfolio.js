@@ -4,52 +4,58 @@
  */
 
 export const profile = {
-    name: 'Alex Morgan',
-    role: 'Graphic Designer',
-    tagline: 'I turn ideas into bold visual stories.',
+    name: 'K Flamez',
+    devName: 'd9p',
+    role: 'Film Maker & Editor',
+    tagline: 'I craft cinematic stories that move people.',
     location: 'Yangon, Myanmar',
-    email: 'hello@alexmorgan.design',
+    email: 'yo@kflamez.design',
     bio: [
-        'I am a graphic designer with 6+ years of experience helping brands find their visual voice. My work spans brand identity, editorial design, illustration and digital products.',
-        'I believe great design is equal parts strategy and craft — every color, grid and letterform has a job to do.',
+        'I am a film maker & editor with 6+ years of experience helping people find their visual voice. My work spans music videos, documentaries, commercials, and narrative films.',
+        'I believe great film is equal parts strategy and craft — every cut, color grade, and sound design choice has a job to do.',
     ],
     stats: [
-        { value: '120+', label: 'Projects delivered' },
-        { value: '40+', label: 'Happy clients' },
+        { value: '120+', label: 'Films edited' },
+        { value: '40+', label: 'Satisfied clients' },
         { value: '6+', label: 'Years experience' },
     ],
 }
 
 export const projects = [
-    { id: 1, title: 'Nova Coffee — Brand Identity', category: 'Branding', year: 2025, colors: ['#8b5cf6', '#ec4899'] },
-    { id: 2, title: 'Bloom Magazine — Editorial', category: 'Print', year: 2025, colors: ['#f59e0b', '#ef4444'] },
-    { id: 3, title: 'Pulse App — UI Kit', category: 'UI Design', year: 2024, colors: ['#06b6d4', '#3b82f6'] },
-    { id: 4, title: 'Wildtype — Poster Series', category: 'Illustration', year: 2024, colors: ['#10b981', '#84cc16'] },
-    { id: 5, title: 'Kanto Records — Album Art', category: 'Illustration', year: 2023, colors: ['#ec4899', '#f43f5e'] },
-    { id: 6, title: 'Atlas Expo — Wayfinding', category: 'Branding', year: 2023, colors: ['#a78bfa', '#60a5fa'] },
+    { id: 1, title: 'Midnight Pulse — Music Video', category: 'Music Video', year: 2025, colors: ['#8b5cf6', '#ec4899'] },
+    { id: 2, title: 'Voices of the River — Documentary', category: 'Documentary', year: 2025, colors: ['#06b6d4', '#3b82f6'] },
+    { id: 3, title: 'Nexus — Commercial Campaign', category: 'Commercial', year: 2024, colors: ['#f59e0b', '#ef4444'] },
+    { id: 4, title: 'Echoes — Short Film', category: 'Short Film', year: 2024, colors: ['#10b981', '#84cc16'] },
+    { id: 5, title: 'Lumina — Brand Film', category: 'Brand Film', year: 2023, colors: ['#ec4899', '#f43f5e'] },
+    { id: 6, title: 'Yangon Live — Event Coverage', category: 'Event Coverage', year: 2023, colors: ['#a78bfa', '#60a5fa'] },
 ]
 
 export const skills = [
-    { name: 'Adobe Photoshop', level: 95 },
-    { name: 'Adobe Illustrator', level: 90 },
-    { name: 'Figma / UI Design', level: 85 },
-    { name: 'Adobe InDesign', level: 80 },
-    { name: 'Brand Strategy', level: 75 },
-    { name: 'After Effects (Motion)', level: 70 },
+    { name: 'Adobe Premiere Pro', level: 95 },
+    { name: 'DaVinci Resolve', level: 90 },
+    { name: 'After Effects', level: 85 },
+    { name: 'Final Cut Pro', level: 80 },
+    { name: 'Avid Media Composer', level: 75 },
+    { name: 'Cinema 4D', level: 70 },
 ]
 
 export const services = [
-    { icon: '🎨', title: 'Brand Identity', text: 'Logos, color systems, typography and full brand guidelines that make brands unforgettable.' },
-    { icon: '✏️', title: 'Illustration', text: 'Custom illustrations and artwork for editorials, packaging, campaigns and products.' },
-    { icon: '📱', title: 'UI & Digital Design', text: 'Clean, usable interfaces for web and mobile — from wireframes to polished UI kits.' },
-    { icon: '🖨️', title: 'Print & Editorial', text: 'Posters, magazines, packaging and marketing collateral with pixel-perfect print prep.' },
-    { icon: '🎬', title: 'Motion Graphics', text: 'Logo animations, social media motion and short explainer videos that grab attention.' },
-    { icon: '📸', title: 'Social Media Design', text: 'Scroll-stopping templates and campaign visuals tuned for every platform.' },
+    { icon: '🎬', title: 'Music Video Editing', text: 'Dynamic, rhythm-driven edits that amplify the artist\'s vision and engage audiences.' },
+    { icon: '🎥', title: 'Documentary Editing', text: 'Compelling storytelling through pacing, structure, and emotional resonance.' },
+    { icon: '📺', title: 'Commercial Editing', text: 'Sharp, persuasive cuts for brands — from concept to final delivery.' },
+    { icon: '🎨', title: 'Color Grading', text: 'Cinematic color palettes that enhance mood, tone, and visual cohesion.' },
+    { icon: '✨', title: 'Motion Graphics', text: 'Title sequences, lower thirds, and visual effects that elevate production value.' },
+    { icon: '🔊', title: 'Sound Design', text: 'Immersive audio landscapes — mixing, Foley, and creative sound design.' },
 ]
 
 export const socials = [
-    { label: 'Behance', href: '#' },
-    { label: 'Dribbble', href: '#' },
-    { label: 'Instagram', href: '#' },
-    { label: 'LinkedIn', href: '#' },
+    { name: 'K Flamez', href: '#' },
+    { name: 'Vimeo', href: '#' },
+    { name: 'YouTube', href: '#' },
+    { name: 'Instagram', href: '#' },
+    { name: 'LinkedIn', href: '#' },
+]
+
+export const dev = [
+    { name: 'd9p', href: '#' }
 ]

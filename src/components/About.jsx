@@ -46,9 +46,18 @@ const Stat = styled.div`
   flex: 1 1 120px;
   padding: 18px 20px;
   border-radius: 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
   text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.15);
+  }
 `
 
 const Value = styled.div`
@@ -78,7 +87,7 @@ export function About() {
             <div className="container">
                 <SectionHeading
                     tag="About"
-                    title="Designer, storyteller & pixel perfectionist"
+                    title="Film maker, editor & visual storyteller"
                 />
                 <div className="row g-5 align-items-center">
                     <div className="col-lg-5">
