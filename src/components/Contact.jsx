@@ -59,7 +59,7 @@ const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;        /* Adjust if your image is different ratio */
-  border-radius: 1px;
+  border-radius: 2px;
   overflow: hidden;
 `
 
@@ -73,7 +73,7 @@ const ContImg = styled.img`
 const Vignette = styled.div`
   position: absolute;
   inset: 0;
-  border-radius: 1px;
+  border-radius: 2px;
   pointer-events: none;
   background: radial-gradient(
     ellipse 80% 82% at 35% 35%,
